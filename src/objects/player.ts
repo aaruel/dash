@@ -61,21 +61,21 @@ class Player extends Phaser.Physics.Matter.Sprite {
     }
 
     updateText() {
-		const x: number = Math.round(this.x)
-		const y: number = Math.round(this.y)
-		this.text.setText(`${x}; ${y}`)
-		this.text.setPosition(x, y - 50)
-	}
+        const x: number = Math.round(this.x)
+        const y: number = Math.round(this.y)
+        this.text.setText(`${x}; ${y}`)
+        this.text.setPosition(x, y - 50)
+    }
 
     movement(cursors: any) {
         const speed: number = Math.abs(this.getVelocity().x)
         // speed filter
         if (speed > this.max_speed) return
         const torqueMultiplier: number = this.getTorqueMultiplier(this.getAngularVelocity())
-		if (cursors.left.isDown) {
+        if (cursors.left.isDown) {
             this.body.torque = -this.torque_force * torqueMultiplier
-		}
-		if (cursors.right.isDown) {
+        }
+        if (cursors.right.isDown) {
             this.body.torque = this.torque_force * torqueMultiplier
         }
     }
