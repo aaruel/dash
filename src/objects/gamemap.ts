@@ -29,7 +29,7 @@ export class GameMap extends Phaser.Scene {
         for (let i = 0; i < numBackgrounds; ++i) {
             let background = this.add.image(0, 0, `backgroundImage_${i}`)
             background.setOrigin(0)
-            background.setScrollFactor((1 + i) / numBackgrounds)
+            background.setScrollFactor((1 + i) / (numBackgrounds*1.5))
         }
         let main = this.add.image(0, 0, 'mainImage')
         main.setOrigin(0)
@@ -50,10 +50,11 @@ export class GameMap extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys()
 
         const backgroundDimensions = this.getImageDimensions('mainImage')
-        this.cameras.main.setBounds(0, 0, backgroundDimensions.x, backgroundDimensions.y)
+        this.cameras.main.setBounds(0, 0, backgroundDimensions.x, backgroundDimensions.y-155)
         this.cameras.main.startFollow(this.player, false)
         
-        this.matter.world.setBounds(0, 0, backgroundDimensions.x, backgroundDimensions.y)
+        
+        this.matter.world.setBounds(0, 0, backgroundDimensions.x, backgroundDimensions.y-175)
         this.matter.world.setGravity(0, this.gravity)
     }
 

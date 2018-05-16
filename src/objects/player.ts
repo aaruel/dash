@@ -21,7 +21,7 @@ class Player extends Phaser.Physics.Matter.Sprite {
         scene.input.keyboard.on("keydown", this.jumpCB.bind(this))
         // Physics modifications
         this.setFriction(this.ground_friction)
-        this.setBounce(1)
+        this.setBounce(0.5)
         this.setMass(this.mass)
     }
 
